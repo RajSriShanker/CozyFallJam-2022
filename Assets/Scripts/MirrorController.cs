@@ -15,7 +15,7 @@ public class MirrorController : MonoBehaviour
 
     void Start()
     {
-
+        transform.position = playerControllerScript.locations[3].transform.position;
     }
 
     // Update is called once per frame

@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
+    private ScoreController scoreControllerScript;
+
+    [SerializeField]
     private PlayerController playerControllerScript;
 
     [SerializeField]
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        scoreControllerScript.scoreAmount = 0;
         Time.timeScale = 1;
         playerControllerScript.enabled = true;
         mirrorControllerScript.enabled = true;
