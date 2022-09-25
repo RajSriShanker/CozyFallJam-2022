@@ -4,14 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Obstacle
   - Column1
   - Column2
+  - Threat
+  - Mirror
+  - MThreat
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

@@ -2,9 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerController playerControllerScript;
+
+    [SerializeField]
+    private MirrorController mirrorControllerScript;
+
+    //UI Elements
+    public Image winImage;
+    public Image loseImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +25,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Restart();
+        }
+
+        if (playerControllerScript.isPlayerDead)
+        {
+            Death();
+        }
     }
 
     public void Pause()
@@ -26,5 +45,15 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
+        playerControllerScript.enabled = true;
+        mirrorControllerScript.enabled = true;
+    }
+
+    public void Death()
+    {
+        playerControllerScript.enabled = false;
+        mirrorControllerScript.enabled = false;
+        Time.timeScale = 0;
+        loseImage.gameObject.SetActive(true);
     }
 }

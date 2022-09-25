@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5618626220954607605}
   m_Layer: 0
   m_Name: 'Threat 1 '
-  m_TagString: Untagged
+  m_TagString: Threat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

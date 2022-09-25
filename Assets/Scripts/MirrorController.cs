@@ -7,6 +7,12 @@ public class MirrorController : MonoBehaviour
     public PlayerController playerControllerScript;
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), playerControllerScript.GetComponent<Collider2D>(), true);
+
+    }
+
     void Start()
     {
 
@@ -14,12 +20,20 @@ public class MirrorController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
-        //If mirrorLocation is not current player location, store current player location in tempLocation, then set mirrorLocation to tempLocation when tempLocation does not equal current Player Location
+    {
+
     }
 
     public void MirrorMove(int previousLocation)
     {
         transform.position = playerControllerScript.locations[previousLocation].transform.position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("MThreat"))
+        {
+            playerControllerScript.isPlayerDead = true;
+        }
     }
 }

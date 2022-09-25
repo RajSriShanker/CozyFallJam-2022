@@ -18,6 +18,13 @@ public class PlayerController : MonoBehaviour
     public int currentLocation;
     public int previousLocation;
 
+    public bool isPlayerDead = false;
+
+    private void Awake()
+    {
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), mirrorControllerScript.GetComponent<Collider2D>(), true);
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +36,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //Reset Position
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -37,14 +45,6 @@ public class PlayerController : MonoBehaviour
         }
 
         //Column 1 Location
-        if (Input.GetKeyDown(KeyCode.Space) && inColumn1)
-        {
-            TempCheck();
-            transform.position = locations[4].position;
-            currentLocation = 4;
-            mirrorControllerScript.MirrorMove(previousLocation);
-        }
-
         if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.UpArrow) && inColumn1)
         {
             TempCheck();
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
             mirrorControllerScript.MirrorMove(previousLocation);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.DownArrow) && inColumn1)
+        else if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.DownArrow) && inColumn1)
         {
             TempCheck();
             transform.position = locations[5].position;
@@ -61,15 +61,15 @@ public class PlayerController : MonoBehaviour
             mirrorControllerScript.MirrorMove(previousLocation);
         }
 
-        //Column 2 Location
-        if (Input.GetKeyDown(KeyCode.Space) && inColumn2)
+        else if (Input.GetKeyDown(KeyCode.Space) && inColumn1)
         {
             TempCheck();
-            transform.position = locations[1].position;
-            currentLocation = 1;
+            transform.position = locations[4].position;
+            currentLocation = 4;
             mirrorControllerScript.MirrorMove(previousLocation);
         }
 
+        //Column 2 Location
         if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.UpArrow) && inColumn2)
         {
             TempCheck();
@@ -77,12 +77,20 @@ public class PlayerController : MonoBehaviour
             currentLocation = 0;
             mirrorControllerScript.MirrorMove(previousLocation);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.DownArrow) && inColumn2)
+        
+        else if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.DownArrow) && inColumn2)
         {
             TempCheck();
             transform.position = locations[2].position;
             currentLocation = 2;
+            mirrorControllerScript.MirrorMove(previousLocation);
+        }
+        
+        else if (Input.GetKeyDown(KeyCode.Space) && inColumn2)
+        {
+            TempCheck();
+            transform.position = locations[1].position;
+            currentLocation = 1;
             mirrorControllerScript.MirrorMove(previousLocation);
         }
     }
@@ -99,6 +107,11 @@ public class PlayerController : MonoBehaviour
         {
             inColumn1 = false;
             inColumn2 = true;
+        }
+
+        if (collision.gameObject.CompareTag("Threat"))
+        {
+            isPlayerDead = true;
         }
     }
 

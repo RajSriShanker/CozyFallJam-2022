@@ -28,5 +28,4 @@ public class ThreatController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetLocation.position, moveSpeed * Time.deltaTime);
     }
 
-
 }
