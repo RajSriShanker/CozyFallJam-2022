@@ -28,7 +28,7 @@ public class ThreatSpawnerController : MonoBehaviour
     void SpawnThreat()
     {
         //Spawn object at spawner position
-        Instantiate(threats[Random.Range(0,threats.Length)], transform.position, Quaternion.identity);
+        Instantiate(threats[Random.Range(0, threats.Length)], transform.position, Quaternion.identity);
     }
 
 }
