@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     //UI Elements
     public Image winImage;
-    public Image loseImage;
+    public TextMeshProUGUI loseImage;
 
     // Start is called before the first frame update
     void Start()
