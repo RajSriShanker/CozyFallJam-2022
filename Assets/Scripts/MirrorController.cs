@@ -33,6 +33,7 @@ public class MirrorController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MThreat"))
         {
+            playerControllerScript.deathSound.Play();
             playerControllerScript.isPlayerDead = true;
         }
     }

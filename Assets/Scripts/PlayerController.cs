@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     public bool isPlayerDead = false;
 
+    public AudioSource teleportSound;
+    public AudioSource deathSound;
+
     private void Awake()
     {
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), mirrorControllerScript.GetComponent<Collider2D>(), true);
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour
         //Reset Position
         if (Input.GetKeyDown(KeyCode.R))
         {
+            teleportSound.Play();
             transform.position = locations[0].position;
             previousLocation = 0;
         }
@@ -47,6 +51,7 @@ public class PlayerController : MonoBehaviour
         //Column 1 Location
         if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.UpArrow) && inColumn1)
         {
+            teleportSound.Play();
             TempCheck();
             transform.position = locations[3].position;
             currentLocation = 3;
@@ -55,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.DownArrow) && inColumn1)
         {
+            teleportSound.Play();
             TempCheck();
             transform.position = locations[5].position;
             currentLocation = 5;
@@ -63,6 +69,7 @@ public class PlayerController : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Space) && inColumn1)
         {
+            teleportSound.Play();
             TempCheck();
             transform.position = locations[4].position;
             currentLocation = 4;
@@ -72,6 +79,7 @@ public class PlayerController : MonoBehaviour
         //Column 2 Location
         if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.UpArrow) && inColumn2)
         {
+            teleportSound.Play();
             TempCheck();
             transform.position = locations[0].position;
             currentLocation = 0;
@@ -80,6 +88,7 @@ public class PlayerController : MonoBehaviour
         
         else if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.DownArrow) && inColumn2)
         {
+            teleportSound.Play();
             TempCheck();
             transform.position = locations[2].position;
             currentLocation = 2;
@@ -88,6 +97,7 @@ public class PlayerController : MonoBehaviour
         
         else if (Input.GetKeyDown(KeyCode.Space) && inColumn2)
         {
+            teleportSound.Play();
             TempCheck();
             transform.position = locations[1].position;
             currentLocation = 1;
@@ -111,6 +121,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Threat"))
         {
+            deathSound.Play();
             isPlayerDead = true;
         }
     }
