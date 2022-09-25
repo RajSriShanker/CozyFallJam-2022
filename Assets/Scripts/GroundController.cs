@@ -24,7 +24,7 @@ public class GroundController : MonoBehaviour
         transform.Translate(0, moveSpeed * Time.deltaTime, 0);
         
         //If object is below -10 on the y axis
-        if (transform.position.y > 10)
+        if (transform.position.y > 11.73)
         {
             //Reset object to starting position
             transform.position = startPos;
