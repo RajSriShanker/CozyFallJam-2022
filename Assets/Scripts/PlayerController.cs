@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource teleportSound;
     public AudioSource deathSound;
+    public AudioSource birdSound;
 
     private void Awake()
     {
@@ -122,6 +123,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Threat"))
         {
             deathSound.Play();
+            birdSound.Play();
             isPlayerDead = true;
         }
     }
